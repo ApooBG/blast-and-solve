@@ -10,10 +10,14 @@ namespace Assets.Scripts.bomb_attachment
     {
         protected IBomb decoratedBomb;
         public DecoratorTypes type;
+        public List<BombDecorator> decorators;
+        public Bomb originalBomb;
 
-        public BombDecorator(IBomb decoratedBomb)
+        public BombDecorator(IBomb decoratedBomb, List<BombDecorator> decorators, Bomb originalBomb)
         {
             this.decoratedBomb = decoratedBomb;
+            this.decorators = decorators;
+            this.originalBomb = originalBomb;
         }
 
         public virtual string Explode()

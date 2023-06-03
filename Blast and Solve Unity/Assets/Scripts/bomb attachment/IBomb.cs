@@ -6,6 +6,5 @@ using UnityEngine;
 
 public interface IBomb
 {
-
     string Explode();
 }

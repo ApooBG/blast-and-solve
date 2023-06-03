@@ -8,8 +8,10 @@ namespace Assets.Scripts.bomb_attachment.Decorators
 {
     public class IceExplosionDecorator : BombDecorator
     {
-        public IceExplosionDecorator(IBomb decoratedBomb) : base(decoratedBomb)
+        public IceExplosionDecorator(IBomb decoratedBomb, List<BombDecorator> listOfDecorators, Bomb b) : base(decoratedBomb, listOfDecorators, b)
         {
+            listOfDecorators.Add(this);
+            type = DecoratorTypes.explosion;
         }
 
         public override string Explode()

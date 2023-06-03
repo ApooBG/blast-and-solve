@@ -30,7 +30,6 @@ public class GameTest : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 // Log the name of the clicked game object
-                Debug.Log("Clicked object: " + hit.collider.gameObject.name);
             }
         }
 

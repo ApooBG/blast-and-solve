@@ -8,8 +8,10 @@ namespace Assets.Scripts.bomb_attachment.Decorators
 {
     public class LineShapeDecorator : BombDecorator
     {
-        public LineShapeDecorator(IBomb decoratedBomb) : base(decoratedBomb)
+        public LineShapeDecorator(IBomb decoratedBomb, List<BombDecorator> listOfDecorators, Bomb b) : base(decoratedBomb, listOfDecorators, b)
         {
+            listOfDecorators.Add(this);
+            type = DecoratorTypes.shape;
         }
 
         public override string Explode()

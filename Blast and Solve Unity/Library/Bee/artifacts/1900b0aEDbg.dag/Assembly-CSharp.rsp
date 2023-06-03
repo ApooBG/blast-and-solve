@@ -357,7 +357,6 @@
 "Assets/Scripts/BlockCreator/NormalBlockBehavior.cs"
 "Assets/Scripts/BlockCreator/RiverBlockBehavior.cs"
 "Assets/Scripts/BlockCreator/RubbleBlockBehavior.cs"
-"Assets/Scripts/BlockCreator/ThreeCoridorDetector.cs"
 "Assets/Scripts/BlockCreator/WallBehavior.cs"
 "Assets/Scripts/bomb attachment/Bomb.cs"
 "Assets/Scripts/bomb attachment/BombDecorator.cs"
