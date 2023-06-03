@@ -11,7 +11,6 @@ public class PlacementBlocks : MonoBehaviour
     [SerializeField] GameTest gameTest;
     [SerializeField] OnImageClick blockClick;
 
-    BlockType blockType;
     List<IBomb> listOfBombs;
 
     // Start is called before the first frame update
@@ -23,7 +22,7 @@ public class PlacementBlocks : MonoBehaviour
 
     public void BlockGridClick(Block block)
     {
-        if (block.blockType == BlockType.Normal)
+        if (block.blockType == BlockType.Normal)  //if the block is of type normal when attaching it to the grid
         {
             if (blockClick.selectedItem.image.name == "Bomb")
             {
@@ -34,17 +33,17 @@ public class PlacementBlocks : MonoBehaviour
             }
         }
 
-        else if (block.blockType == BlockType.Bomb)
+        else if (block.blockType == BlockType.Bomb) // if the block is of type bomb when attaching it to the grid
         {
             foreach (IBomb b in listOfBombs)
             {
-                Bomb originalBomb = GetOriginalBomb(b);
-                if (block == originalBomb.block)
+                Bomb originalBomb = GetOriginalBomb(b); //get the original bomb if this one is decorated 
+                if (block == originalBomb.block) //a check if thats the same bomb on the block
                 {
-                    Decorator decorator = blockClick.selectedItem;
-                    if (!CheckIfTypeAlreadyAttached(b, decorator.type))
+                    Decorator decorator = blockClick.selectedItem; //gets the selected power from the user
+                    if (!CheckIfTypeAlreadyAttached(b, decorator.type)) //checks if the same type of power is attached to the bomb and if its not then attaches it.
                     {
-                        BombDecorator test = GetDecorator(b, decorator.image);
+                        BombDecorator test = AttachDecorator(b, decorator.image);
                         listOfBombs.Remove(b);
                         listOfBombs.Add(test);
                         Debug.Log(test.Explode());
@@ -53,7 +52,7 @@ public class PlacementBlocks : MonoBehaviour
                 }
             }
 
-            if (blockClick.selectedItem.type == DecoratorTypes.shape)
+/*            if (blockClick.selectedItem.type == DecoratorTypes.shape)
             {
                // block.ChangeBlockType(BlockType.Bomb, gameTest.materialsHolder);
                 IBomb b = listOfBombs[0];
@@ -70,7 +69,7 @@ public class PlacementBlocks : MonoBehaviour
                     BombDecorator nextDecorator = GetDecorator(b, blockClick.selectedItem.image);
                 }
             }
-        }
+        }*/
     }
 
     bool CheckIfTypeAlreadyAttached(IBomb b, DecoratorTypes type) //checks if the bomb has the same type of decorator attached
@@ -122,7 +121,7 @@ public class PlacementBlocks : MonoBehaviour
 
     }*/
 
-    BombDecorator GetDecorator(IBomb bomb, Image image)
+    BombDecorator AttachDecorator(IBomb bomb, Image image) 
     {
         BombDecorator bombDecorator = null;
         switch (image.name)
@@ -193,7 +192,7 @@ public class PlacementBlocks : MonoBehaviour
         return bombDecorator;
     }
 
-    List<BombDecorator> GetListOfDecorations(IBomb b)
+    List<BombDecorator> GetListOfDecorations(IBomb b) //for that bomb gets the list of decorators
     {
         List<BombDecorator> listOfDecorations = new List<BombDecorator>();
 
@@ -221,4 +220,4 @@ public class PlacementBlocks : MonoBehaviour
             return ((BombDecorator)b).originalBomb;
         }
     }
-}
+}}
